@@ -5,6 +5,7 @@ Tomislav Maric - maric@mma.tu-darmstadt.de
 Dirk Gründing - gruending@mma.tu-darmstadt.de
 
 ## Description
+**Please be careful not to add simulation results to the git repository!!!"
 Add a short description of how this project is structured here.
 
 ## Installation 
