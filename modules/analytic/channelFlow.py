@@ -3,7 +3,7 @@ import numpy as np
 # analytic reference solution for the Couette and 
 # Poiseuille flow between two plates
 
-def channelFlow_poiseuille(x, mu, H, G, L=0):
+def poiseuille(x, mu, H, G, L=0):
     '''Analytic Poiseuille-flow velocity field between two plates
 
     The coordinate system is located in the center of the channel
