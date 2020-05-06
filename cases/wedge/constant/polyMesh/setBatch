@@ -1,0 +1,6 @@
+faceSet sides_faces new patchToFace sides;
+faceSet freeSurface new boxToFace (-0.004 -0.004 0.00099) (0.004 0.004 0.002);
+faceSet bottom new boxToFace (-0.004 -0.004 -0.0001) (0.004 0.004 0.00001);
+faceSet sides_faces delete faceToFace freeSurface
+faceSet sides_faces delete faceToFace bottom
+quit

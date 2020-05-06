@@ -1,0 +1,67 @@
+#!/bin/sh
+
+. $ITRACKING/bin/tools/CleanFunctions
+
+cleanVTKFolder ()
+{
+    rm -rf ./VTK \
+        > /dev/null 2>&1
+}
+
+cleanFaMesh ()
+{
+    rm -rf ./constant/faMesh/faBoundary \
+        > /dev/null 2>&1
+    rm -rf ./constant/faMesh/faceLabels \
+        > /dev/null 2>&1
+}
+
+cleanPolyMesh ()
+{
+    rm -rf ./constant/polyMesh/boundary \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/points \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/faces \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/faceZones \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/cellZones \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/pointZones \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/owner \
+        > /dev/null 2>&1
+    rm -rf ./constant/polyMesh/neighbour \
+        > /dev/null 2>&1
+}
+
+cleanSubFaMesh ()
+{
+    rm -rf ./0/faMesh \
+        > /dev/null 2>&1
+}
+
+cleanSubPolyMesh ()
+{
+    rm -rf ./0/polyMesh \
+        > /dev/null 2>&1
+}
+
+cleanSets()
+{
+    rm -rf ./constant/polyMesh/sets \
+        > /dev/null 2>&1
+}
+
+cleanMonitoring
+cleanTimeDirectories
+cleanVTKFolder
+cleanFaMesh
+rm wedgePos.sMesh > /dev/null 2<&1
+cleanPolyMesh
+rm -r 0/polyMesh > /dev/null 2<&1
+rm -r 0/faMesh > /dev/null 2<&1
+rm -f wedgePos.sMesh > /dev/null 2>&1
+rm -f constant/extrudeProperties > /dev/null 2>&1
+rm -f constant/polyMesh/blockMeshDict > /dev/null 2>&1

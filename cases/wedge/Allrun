@@ -1,0 +1,10 @@
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application="surfaceTrackingFoam"
+
+./Allclean
+./Allmesh
+
+runApplication makeFaMesh
+runApplication $application
+

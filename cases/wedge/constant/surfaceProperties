@@ -1,0 +1,47 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     3.1                                |
+|   \\  /    A nd           | Web:         http://www.extend-project.de       |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      surfaceProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceType    freeSurface;
+
+SurfaceEvolver          CP;
+minSurfaceCorrectors    2;
+maxSurfaceCorrectors    10;
+maxResidualNorm         1e-8;
+monitoring              off;
+//nSurfaceCorrectors    3;
+smoothing               off;
+normalMotionDir         yes;
+//motionDir (0 0 0);
+
+nonLinResMax            1e-8;
+nonLinMax               500;
+puResMax                1e-6;
+puMax                   10;
+pResMax                 1e-6;
+pMax                    10;
+
+muFluidA muFluidA [ 1 -1 -1 0 0 0 0 ] 0.001;
+muFluidB muFluidB [ 1 -1 -1 0 0 0 0 ] 20e-06;  
+rhoFluidA rhoFluidA [ 1 -3  0 0 0 0 0 ] 1000;
+rhoFluidB rhoFluidB [ 1 -3  0 0 0 0 0 ] 1.2;  
+cleanSurfaceTension cleanSurfaceTension [ 1 0 -2 0 0 0 0 ] 0.072;
+g g [ 0 1 -2 0 0 0 0 ] ( 0 0 9.81);  //no influence
+
+fixedSurfacePatches 0 ();
+pointNormalsCorrectionPatches 0 ();
+
+// ************************************************************************* //

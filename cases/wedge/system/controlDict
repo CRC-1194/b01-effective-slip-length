@@ -1,0 +1,59 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     3.1                                |
+|   \\  /    A nd           | Web:         http://www.extend-project.de       |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+applicationClass    surfaceTrackingFoam;
+
+startFrom           startTime;
+
+startTime           0;
+
+stopAt              endTime;
+
+endTime             1e-1;
+
+deltaT              1e-08;
+
+writeControl        timeStep; //adjustableRunTime;  //runTime;
+
+writeInterval       1;
+
+cycleWrite          0;
+
+writeFormat         ascii;
+
+writePrecision      10;
+
+writeCompression    uncompressed;
+
+timeFormat          general;
+
+timePrecision       10;
+
+runTimeModifiable   yes;
+
+adjustTimeStep      no;
+
+//maxCo               0.5; //0.5;
+//
+//maxDeltaT           1.5e-06; //1e-06;
+//
+//minDeltaT           1e-09;
+
+
+// ************************************************************************* //
+
