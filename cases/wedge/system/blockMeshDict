@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1912                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  2.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -14,26 +14,26 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-scale   0.001;
+scale 0.001;
 
-vertices
+vertices        
 (
-    (0 0 0)
-    (1 -1 0)
-    (1 1 0)
-    (0 1 0)
-    (0 0 1)
-    (1 -1 1)
-    (1 1 1)
-    (0 1 1)
+	//Axis Points
+	(0 0 0)
+	(1 0 0)
+
+	(0 1 0.1)
+	(1 1 0.1)
+	(1 1 -0.1)
+	(0 1 -0.1)
 );
 
-blocks
+blocks          
 (
-    hex (1 5 6 2 0 4 4 0) (10 1 10) simpleGrading (1 1 1)
+	hex (0 1 1 0 2 3 4 5) (10 1 10) simpleGrading (1 1 1)
 );
 
-edges
+edges           
 (
 );
 
@@ -44,59 +44,52 @@ boundary
         type wall;
         faces
         (
-            (4 5 6 4)
+            (1 4 3 1)
         );
     }
-
-    bottom
+    
+    bottom  
     {
         type wall;
         faces
         (
-            (0 2 1 0)
+            (0 2 5 0)
         );
     }
-
-    front
-    {
-        type empty;
-        faces
-        (
-            (0 4 4 0)
-        );
-    }
-
-    back
+    outerWall
     {
         type wall;
         faces
         (
-            (6 5 1 2)
+            (3 4 5 2)
         );
     }
-
-    right
-    {
-        type wedge;
-        faces
-        (
-            (1 5 4 0)
-        );
-    }
-
     left
     {
         type wedge;
         faces
         (
-            (4 6 2 0)
+            (0 1 3 2)
         );
     }
-
+    right
+    {
+        type wedge;
+        faces
+        (
+            (1 0 5 4)
+        );
+    }
+    axis
+    {
+        type empty;
+        faces
+        (
+            (0 0 1 1)
+        );
+    }
 );
 
 mergePatchPairs
 (
 );
-
-// ************************************************************************* //
