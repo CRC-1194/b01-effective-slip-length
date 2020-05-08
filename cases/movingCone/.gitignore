@@ -6,37 +6,19 @@
 !Allrun
 !Allclean
 !Alldebug
-!Alleval
-!Allmesh
 
 !0/
-!0/pointMotionU
-!0/motionU
 !0/p
 !0/U
 
 !constant/
-!constant/contactAngleProperties
-!constant/dynamicMeshDict
-!constant/surfaceProperties
-!constant/faMesh/
-!constant/faMesh/faMeshDefinition
 !constant/polyMesh/
+!constant/transportProperties
+!constant/turbulenceProperties
 
 !system/
 !system/controlDict
-!system/faSchemes
-!system/faSolution
 !system/fvSchemes
 !system/fvSolution
-!system/tetFemSolution
 
-# extra files and folders:
-!constant/extrudeProperties.template
-
-!constant/polyMesh/blockMeshDict.template
 !constant/polyMesh/blockMeshDict
-
-!system/createPatchDict
-!constant/polyMesh/setBatch
-
