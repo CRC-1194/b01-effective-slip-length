@@ -37,18 +37,3 @@ sed -i "s/OPT_nhA/$nhA/" constant/polyMesh/blockMeshDict
 
 # run blockMesh to create wedge
 runApplication blockMesh
-
-# set up the extrudeProperties
-cp constant/extrudeProperties.template constant/extrudeProperties
-sed -i "s/OPT_angle/360/" constant/extrudeProperties # 360 for the full cylinder
-
-# number of layers should be the number of opening angles
-layers=$(echo "360/$theta" | bc);
-sed -i "s/OPT_layers/$layers/" constant/extrudeProperties
-runApplication extrudeMesh
-
-runApplication setSet -batch constant/polyMesh/setBatch
-
-runApplication createPatch -overwrite # overwrite runs over the constant/polyMesh folder
-
-rm wedgePos.sMesh > /dev/null 2<&1
