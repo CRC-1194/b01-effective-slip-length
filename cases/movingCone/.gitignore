@@ -21,4 +21,4 @@
 !system/fvSchemes
 !system/fvSolution
 
-!constant/polyMesh/blockMeshDict
+!system/blockMeshDict
