@@ -22,9 +22,18 @@ boundaryField
 {
     top
     {
-        type            fixedValue;
-        value           uniform (0 0 0); // to be adapted for rotation of top disk
-    }
+        type            rotatingWallVelocity;
+        origin          (0 0 0);
+        axis            (1 0 0);
+        omega           1;
+    }           
+
+   // top
+   // {
+   //     type            fixedValue;
+   //     value           uniform (0 0 0); // to be adapted for rotation of top>
+   // }
+
 
     bottom
     {
