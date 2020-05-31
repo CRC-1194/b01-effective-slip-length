@@ -1,32 +1,32 @@
 import numpy as np
+import scipy.special as spe
 
-# analytic reference solution for the Couette and 
-# Poiseuille flow between two plates
 
-def rotatingflow(x, r, h, omega, mu, L1 = 0, L2 =0):
+def rotatingflow(r, z, R, H, omega):
     '''Analytic Poiseuille-flow velocity field between two rotating plates
 
     The coordinate system is located in the center of the channel
-    x - coordinate in the channel (cross section)
+    r, z - coordinate in the wedge
     r - radius of the wedge
-    mu - kinematic viscosity
-    h - height of the channel
-    omega - rotation speed
-    L - slip length (default L=0)
+    H - height of the wedge
+    omega - angular velocity
+
     '''
     # f(eta) is a sixth degree polynomial 
-    u = -np.sqrt(omega**5/mu**3)/24*(6/h**3*x**5 - 10/h**2*x**4 + 4/h*x**3)*r
-    v = omega*r*(-x**4/h**4 + 2/h**3*x**3)
-    w = omega**2/(12*mu)*(1/h**3*x**6 - 2/h**2*x**5 + 1/h*x**4)
-    magU = np.sqrt(u**2 + v**2 + w**2)
+    #u = -np.sqrt(omega**5/nu**3)/24*(6/h**3*z**5 - 10/h**2*z**4 + 4/h*z**3)*r
+    #v = omega*r*((0.77139*h*np.sqrt(omega/nu)-1)/h**4*z**4+(2-1.54278*h*np.sqrt(omega/nu))/h**3*z**3+0.77139*z*np.sqrt(omega/nu))
+    #w = omega**2/(12*nu)*(1/h**3*z**6 - 2/h**2*z**5 + 1/h*z**4)
+    #magU = np.sqrt(u**2 + v**2 + w**2)
 
-    # f(eta) is a fifth degree polynomial    
-    # u = -np.sqrt(omega**5/mu**3)/48*(10/h**2*x**4 - 12/h*x**3 + 2*h*x)*r
-    # v = omega*r*(-x**4/h**4 + 2/h**3*x**3)
-    # w = omega**2/(24*mu)*(2/h**2*x**5 - 3/h*x**4 + h*x**2)
-    # magU = np.sqrt(u**2 + v**2 + w**2)
+    zero_J1 = spe.jn_zeros(1,220)
+    beta = H/R
+
+    v_phi_r = 0
+    v_phi_z = 0
     
+    for j in range(zero_J1.size - 1):
+        v_phi_r = v_phi_r + 2*spe.jv(1,zero_J1[j]*r)*np.sinh(zero_J1[j]*(-z))/(zero_J1[j]*np.sinh(zero_J1[j]*beta)*spe.jv(0,zero_J1[j]))
+        #v_phi_z = v_phi_z + 2*spe.jv(1,zero_J1[j]*0.5*R/R)*np.sinh(zero_J1[j]*(-z))/(zero_J1[j]*np.sinh(zero_J1[j]*beta)*spe.jv(0,zero_J1[j]))
     
-    
-    return u, v, w, magU
+    return omega*R*v_phi_r
 
