@@ -1,0 +1,20 @@
+values
+{
+    solver (pimpleFoam);
+
+    H 
+    (
+        0.005 0.0006  // gap height
+    );
+
+    M
+    (
+        6 8           // number of cells in z direction
+    );
+
+
+    N
+    (
+        6000 8000     // number of cells in x direction
+    ); 
+}
