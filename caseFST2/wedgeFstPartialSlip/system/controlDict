@@ -23,9 +23,9 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2e-6;
+endTime         0.04;
 
-deltaT          1e-08;
+deltaT          1e-05;
 
 writeControl    timeStep;
 
@@ -66,8 +66,8 @@ functions
             {
                 type    uniform;
                 axis    x;
-                start   (0 0 #calc "float(@!H!@/2)");
-                end     (32e-3 0 #calc "float(@!H!@/2)");
+                start   (0 0 2.5e-6);
+                end     (32e-3 0 2.5e-6);
                 nPoints 200;
             }
         );
@@ -86,7 +86,7 @@ functions
 	rho                   rhoInf;
 	rhoInf                828;
 	outputControl         timeStep;
-	outputInterval        10;
+	outputInterval        100;
 
     }
 }
