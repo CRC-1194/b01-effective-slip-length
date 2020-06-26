@@ -44,6 +44,11 @@ Description
 
     \f$ w_u = \frac{w}{\|w\|} \f$
 
+
+    Usage example: 
+
+    foamSetRotationalPatchVelocity -axisPoint '(0 0 0)' -angularVelocity '(0 0 1)' -patchName top
+
 Autor
     Tomislav Maric, maric@mma.tu-darmstadt.de
     Mathematical Modeling and Analysis (Head: Prof. Dieter Bothe)
