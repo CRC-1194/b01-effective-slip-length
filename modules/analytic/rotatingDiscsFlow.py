@@ -13,7 +13,7 @@ def rotatingflow(r, z, R, H, omega):
     '''
 
 
-    zero_J1 = spe.jn_zeros(1,220)    #the positive zeros of the bessel function 1st degree
+    zero_J1 = spe.jn_zeros(1,8000)    #the positive zeros of the bessel function 1st degree
     beta = H/R
 
     v_phi_r = 0
