@@ -1,9 +1,0 @@
-values
-{
-    solver (pimpleFoam);
-
-    N
-    (
-        20 40
-    ); 
-}

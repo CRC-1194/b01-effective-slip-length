@@ -18,6 +18,10 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 04b36cfe70161160007cc1aa9375ff3f8d10c6c7
 boundaryField
 {
     top
@@ -37,10 +41,8 @@ boundaryField
 
     bottom
     {
-
-	type             partialSlip;
+        type             partialSlip;
         valueFraction    uniform #calc "float(1-0.00108/(0.00108+@!H!@/@!M!@))"; // 1-slip length/(slip length+gap height/number of cells in z direction)
-	
     }
 
     outerWall

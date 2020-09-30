@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1e-6;
+endTime         1.4e-6;
 
 deltaT          1e-08;
 
@@ -85,8 +85,13 @@ functions
 	CofR                  (0 0 0);
 	rho                   rhoInf;
 	rhoInf                828;
+<<<<<<< HEAD
 	writeControl          timeStep;
 	writeInterval         10;
+=======
+	outputControl         timeStep;
+	outputInterval        10;
+>>>>>>> 04b36cfe70161160007cc1aa9375ff3f8d10c6c7
 
     }
 }

@@ -39,4 +39,4 @@ if ((options.casedir == None) or
 call(["pyFoamRunParameterVariation.py", "--no-execute-solver", "--no-server-process", 
       "--no-mesh-create", "--no-case-setup", "--cloned-case-prefix=%s" % options.studyname, 
       "--every-variant-one-case-execution",
-    "--create-database", options.casedir, options.paramfile])
+      "--create-database", options.casedir, options.paramfile])

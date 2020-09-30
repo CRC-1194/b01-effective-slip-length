@@ -9,12 +9,12 @@ values
 
     M
     (
-        16 32 64 128 // number of cells in z direction 6  12 16
+        16 32 64 128 // number of cells in z direction 
     );
 
 
     N
     (
-        2048 4096 // number of cells in r direction8000 12000 16000
+        2048 4096 8000 12000 16000 // number of cells in r direction
     ); 
 }
