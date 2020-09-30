@@ -2,3 +2,5 @@
 __pycache__
 *.pyc
 *_00*_*/
+*.database
+PyFoamHistory
