@@ -1,0 +1,117 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+scale 0.001;
+
+R 32;
+R1 1;
+//H 0.005;
+Ax #calc "$R * cos(degToRad(1))";
+Ay #calc "$R * sin(degToRad(1))";
+Bx #calc "$R1 * cos(degToRad(1))";
+By #calc "$R1 * sin(degToRad(1))";
+vertices        
+(	//Axis Points
+	(0 0 0)
+	(0 0 @!H!@)
+	($Ax $Ay 0)
+	($Ax $Ay @!H!@)
+	($Ax -$Ay @!H!@)
+	($Ax -$Ay 0)
+	($Bx -$By 0)
+	($Bx $By 0)
+	($Bx -$By @!H!@)
+	($Bx $By @!H!@)
+);
+
+blocks          
+(
+	hex (0 6 7 0 1 8 9 1) (32 1 10) simpleGrading (1 1 1)	
+	hex (6 5 2 7 8 4 3 9) (968 1 10) simpleGrading (1 1 1)
+);
+
+edges           
+(
+arc 2 5($R 0 0)
+arc 3 4($R 0 @!H!@)
+arc 6 7($R1 0 @!H!@)
+);
+
+boundary
+(
+    top
+    {
+        type wall;
+        faces
+        (
+            (8 4 3 9)
+        );
+    }
+    inlet 
+    {
+    	type patch;
+    	faces
+    	(
+    	    (1 8 9 1)
+	);
+    }
+    bottom  
+    {
+        type wall;
+        faces
+        (
+            (7 2 5 6)
+            (0 7 6 0)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (3 4 5 2)
+        );
+    }
+    left
+    {
+        type wedge;
+        faces
+        (
+            (7 9 3 2)
+            (0 1 9 7)
+        );
+    }
+    right
+    {
+        type wedge;
+        faces
+        (
+            (8 6 5 4)
+            (1 0 6 8)
+        );
+    }
+    axis
+    {
+        type empty;
+        faces
+        (
+            (0 0 1 1)
+        );
+    } 
+);
+
+mergePatchPairs
+(
+);
